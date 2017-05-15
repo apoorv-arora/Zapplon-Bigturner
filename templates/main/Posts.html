@@ -1,0 +1,58 @@
+{% extends "_base.html" %}
+{% block content %}
+{% if showpoints %}
+<div><a href="/userdetails?userid={{ current_user.id }}"><button class="btn btn-primary">View/Edit your payment</button></a></div>{% endif %}
+
+{% if posts %}
+<table class="table">
+  <thead>
+    <tr>
+    <th>@</th>
+    {% if current_user.admin %}<th>#</th>{% endif %}
+
+      <th>post_title</th>
+      <th>post_link</th>
+      <th>post_image</th>
+      <!-- <th>post_description</th> -->
+      <th>post_code</th>
+      {% if showpoints %}<th> earned points</th>{% endif %}
+    </tr>
+  </thead>
+  <tbody>
+    
+{% for obj in posts %}
+<tr>
+<th>{{ obj.id }}</th>
+{% if current_user.admin %}<td><a href="/showposts?deletepostbyid={{ obj.id }}">X</a></td>{% endif %}
+<td>{{ obj.post_title }}</td>
+<td>{{ obj.post_link }}</td>
+<td><a href={{ obj.post_image }}>[I]</a></td>
+<!-- <td>{{ obj.post_description }}</td> -->
+<td><a href='/showpost/{{ obj.post_code }}?ref={{ ref }}'>L</a></td>
+{% if obj.earned_points %}
+<td><b style="color:red;font-size: 20px;">{{ obj.earned_points }} </b></td>
+{% endif %}
+<td>
+<div class="fb-share-button" 
+  data-href="/showpost/{{ obj.post_code }}?ref={{ ref }}" 
+  data-layout="button_count" 
+  data-mobile-iframe="false">
+  </div>
+  </td>
+</tr>
+{% endfor %}
+
+</tbody>
+</table>
+{% endif %}
+
+
+{% if pointsofpast %}
+<div class="alert alert-success" role="alert"><b>your points of last 15 days: {{ pointsofpast }}</b></div>
+{% endif %}
+{% if pointsofyesterday %}
+<div class="alert alert-success" role="alert"><b>your points of last 24hrs: {{ pointsofyesterday }}</b></div>
+{% endif %}
+
+
+{% endblock %}

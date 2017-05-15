@@ -1,0 +1,62 @@
+{% extends "_base.html" %}
+{% from 'main/common.html' import edit_field %}
+{% block content %}
+<div class='edit well offset 2 span8'>
+    <form method='post' class="form">
+        {{ form.csrf_token }}
+        <legend>Update rate</legend>
+        <fieldset class="form-group">
+        {{ edit_field(form.rate, class="form-control", value=rate) }}
+        </fieldset>
+<p>
+        <div class="form-actions">
+            <button class = "btn btn-success" type="submit" class="btn">SAVE</button>
+        </div>
+        </p>
+    </form>
+</div>
+{% if users %}
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>registered_on</th>
+      <th>fb page</th>
+      <th>email</th>
+      <th>admin</th>
+      <th>usertype</th>
+      <!-- <th>password</th> -->
+    </tr>
+  </thead>
+  <tbody>
+{% for obj in users %}
+<tr>
+<td><a href="/userdetails?userid={{ obj.id }}" >{{ obj.id }}</a></td>
+
+<td>{{ obj.registered_on }}</td>
+<td>{{ obj.page }}</td>
+<td>{{ obj.email }}</td>
+<td>{{ obj.admin }}</td>
+{% if obj.usertype == 0 %}
+<td>registered</td>
+{% endif %}
+{% if obj.usertype == 1 %}
+<td>affiliated</td>
+{% endif %}
+{% if obj.usertype == 2 %}
+<td>editor</td>
+{% endif %}
+{% if obj.usertype == 3 %}
+<td>admin</td>
+{% endif %}
+
+<td><a href="/showusers?toggle={{ obj.id }}">[]</a></td>
+
+<!-- <td>{{ obj.password }}</td> -->
+</tr>
+{% endfor %}
+</tbody>
+</table>
+{% endif %}
+
+{% endblock %}

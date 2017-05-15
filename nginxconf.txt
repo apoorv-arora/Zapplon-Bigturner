@@ -1,0 +1,18 @@
+server {
+    listen 80;
+    server_name bigturner.in;
+
+    location / {
+        include         uwsgi_params;
+        uwsgi_pass      unix:/home/ubuntu/bigturner/bigturner.sock;
+    }
+}
+server {
+    listen 80;
+    server_name www.bigturner.in;
+
+    location / {
+        include         uwsgi_params;
+        uwsgi_pass      unix:/home/ubuntu/bigturner/bigturner.sock;
+    }
+}

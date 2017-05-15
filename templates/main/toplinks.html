@@ -1,0 +1,98 @@
+
+{% extends "_base.html" %}
+{% block content %}
+{% if apage %}
+<div class="text-center">
+<label id="category" >Select Category</label>
+  <select id="filter" onchange="filter(this.value)">
+  <option></option>
+    {% for x in post %}
+
+    <option>
+      {{x}}
+    </option>
+    {% endfor %}
+  </select>
+</div>
+<div class="row">
+<!--<label>enter category</label>
+<input type="text" id="myselect"/>-->
+ 
+{% if currentpageno %}
+<div class="row top-buffer80 text-left">
+  <div class="col-md-6">
+    {% if currentpageno > 1 %}
+    <a href="/pages?category={{ category }}&page={{ currentpageno-1 }}">
+      <button type="button" class="btn btn-secondary left-button">prev</button>
+    </a>
+    <!-- <a href="/pages?page={{ currentpageno-1 }}"><button class="btn-secondary btn">prev</button></a> -->
+    {% endif %}
+  </div>
+  <div class="col-md-6 text-right">
+    {% if currentpageno < limitpage %}
+    <a href="/pages?category={{ category }}&page={{ currentpageno+1 }}">
+      <button type="button" class="btn btn-secondary right-button">next</button>
+    </a>
+    {% endif %}
+    <!-- <a href="/pages?page={{ currentpageno+1 }}"><button class="btn-secondary btn">next</button></a> -->
+  </div>
+</div>
+{% endif %}
+
+
+<div class="row">
+{% for obj in apage.items %}
+{% if obj.post_category==category or category==None or category=='all'%}
+<div class="col-sm-6 " id="state" >
+    {% if obj.post_topheading %}
+    <h2>{{ obj.post_topheading }}</h2>
+     {% endif %}
+     {% if obj.post_topheading==None %}
+    <h2>None</h2>
+     {% endif %}
+
+     <article class="post " >
+       <div class="featured-thumbnail">
+       
+       <img data-src="{{ obj.post_image }}" src = "{{ obj.post_image }}" alt="Card image cap" >
+
+
+     </div>
+     </article>
+     
+      
+
+      <div class="card-block">
+        <h4 class="card-title"><b>{{ obj.post_title }}</b></h4>
+        <p class="card-text">{{ obj.id }}
+          {% if obj.earned_points %}
+          <b style="color:red;font-size: 20px;">{{ obj.earned_points }}</b>
+          {% endif %}
+        </p>
+
+        <button data-clipboard-text="bigturner.in/showpost/{{ obj.post_code }}?ref={{ ref }}" class="specialbtn btn btn-primary">copy link</button>
+        <input value="bigturner.in/showpost/{{ obj.post_code }}?ref={{ ref }}" type="text">
+        <div class="fb-share-button" style="float:right;" 
+        data-href="/showpost/{{ obj.post_code }}?ref={{ ref }}" 
+        data-layout="button_count" 
+        data-mobile-iframe="false">
+      </div>
+    </div>
+   
+  </div>
+{% endif %}
+ {% endfor %}
+</div>
+{% endif %}
+{% endblock %}
+{% block js %}
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
+</script>
+<script type="text/javascript">
+  function filter(value){
+    window.location = '/pages?category='+value;  
+  }
+  
+</script>
+
+{% endblock %}

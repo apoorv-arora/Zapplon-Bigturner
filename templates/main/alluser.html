@@ -1,0 +1,105 @@
+{% extends "_base.html" %}
+{% block content %}
+
+
+{% if singleuser %}
+<p>{{ singleuser.id }}</p>
+{% endif %}
+
+{% if singlepost %}
+
+{% include "footer.html" ignore missing %}
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>created_on</th>
+      <th>post_title</th>
+      <th>post_link</th>
+      <th>post_image</th>
+      <!-- <th>post_description</th> -->
+      <th>post_code</th>
+    </tr>
+  </thead>
+  <tbody>
+<tr>
+<th>{{ singlepost.id }}</th>
+<td>{{ singlepost.created_on }}</td>
+<td>{{ singlepost.post_title }}</td>
+<td><a href={{ singlepost.post_link }}>P</a></td>
+<td><a href={{ singlepost.post_image }}>[I]</a></td>
+<!-- <td>{{ singlepost.post_description }}</td> -->
+<td>{{ singlepost.post_code }}</td>
+</tr>
+</tbody>
+</table>
+
+
+{% endif %}
+
+{% if tracking %}
+<table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>created_on</th>
+      <th>post_ID</th>
+      <th>user_ID</th>
+      <th>IP</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+{% for obj in tracking %}
+<tr>
+<th>{{ obj.id }}</th>
+<td>{{ obj.created_on }}</td>
+<td>{{ obj.post_ID }}</td>
+<td>{{ obj.user_ID }}</td>
+<td>{{ obj.ip }}</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+{% endif %}
+
+{% if points %}
+<table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>created_on</th>
+      <th>updated_on</th>
+      <th>post_ID</th>
+      <th>user_ID</th>
+      <th>earned_points</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+{% for obj in points %}
+<tr>
+<th>{{ obj.id }}</th>
+<td>{{ obj.created_on }}</td>
+<td>{{ obj.updated_on }}</td>
+<td>{{ obj.post_ID }}</td>
+<td>{{ obj.user_ID }}</td>
+<td>{{ obj.earned_points }}</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+{% endif %}
+
+
+
+
+
+<h1>Welcome!</h1>
+<br>
+<p><a href="/logout">Logout</a>
+        {% if current_user.confirmed%}
+        <p><a href="/showposts?showearning=89">Earnings</a>
+        {% endif %}
+{% endblock %}

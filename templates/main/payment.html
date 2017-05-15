@@ -1,0 +1,84 @@
+{% extends "_base.html" %}
+{% from 'main/common.html' import edit_field %}
+{% block content %}
+{% if current_user.admin %}
+{% if payfor %}
+<div class='edit well offset 2 span8'>
+    <form method='post' class="form">
+        {{ form.csrf_token }}
+        <legend>Add payment</legend>
+        <fieldset class="form-group">
+        {{ edit_field(form.amount, class="form-control") }}
+        </fieldset>
+        <fieldset class="form-group">
+        {{ edit_field(form.comment, class="form-control") }}
+        </fieldset>
+        <p>
+        <div class="form-actions">
+            <button class = "btn btn-success" type="submit" class="btn">DONE</button>
+        </div>
+        </p>
+    </form>
+</div>
+{% endif %}
+{% endif %}
+
+{% if unpaidpoints %}
+your unpaidpoints: {{ unpaidpoints }}
+{% endif %}
+
+
+{% if unpaid %}
+<b>unpaid points: {{unpaid}}</b><br>
+{% endif %}
+{% if current_user.admin %}total amount distributed
+{% else %}
+total amount earned
+{% endif %}
+{{ totalamount }}</b><br>
+{% if payments %}
+{% if rate %}
+<b>current rate: {{rate}}</b><br>
+{% endif %}
+<table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>userid</th>
+      <th>date</th>
+      <th>amount</th>
+      <th>comment</th>
+      {% if current_user.admin %}
+      <th>pay</th>
+      {% endif %}
+    </tr>
+  </thead>
+  <tbody>
+{% for obj in payments %}
+<tr>
+<th>{{ obj.id }}</th>
+<td>{{ obj.user_ID }}</td>
+<td>{{ obj.created_on }}</td>
+<td>{{ obj.amount }}</td>
+<td>{{ obj.comment }}</td>
+{% if current_user.admin %}
+<td><a href="/payment?userid={{ obj.user_ID }}&payfor={{ obj.user_ID }}">Pay</a></td>
+{% endif %}
+</tr>
+{% endfor %}
+
+
+</tbody>
+</table>
+{% endif %}
+
+
+{% if pointsofpast %}
+<div class="alert alert-success" role="alert"><b>your points of last 15 days: {{ pointsofpast }}</b></div>
+{% endif %}
+{% if pointsofyesterday %}
+<div class="alert alert-success" role="alert"><b>your points of last 24hrs: {{ pointsofyesterday }}</b></div>
+{% endif %}
+
+
+{% endblock %}

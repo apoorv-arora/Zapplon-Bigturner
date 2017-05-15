@@ -1,0 +1,67 @@
+{% extends "_base.html" %}
+{% from 'main/common.html' import edit_field %}
+{% block content %}
+
+<b>
+<p>total amount: {{total}}</p>
+<p>total amount paid: {{paidtilldate}}</p>
+<p>total unpaid clicks: {{unpaidtilldate}}</p>
+<p>total amount unpaid: {{unpaidtilldate}} * {{rate}}cpm</p>
+</b>
+{% if current_user.admin %}
+<a href="/payment?userid={{ user.id }}&payfor={{ user.id }}"><button class="btn">pay this user</button></a>
+{% endif %}
+
+<div class='edit well offset 2 span8'>
+    <form method='post' class="form">
+        {{ form.csrf_token }}
+        <legend>Personal Details</legend>
+        <fieldset class="form-group">
+        {{ edit_field(form.name, class="form-control", value=user.name) }}
+        </fieldset>
+	<fieldset class = "form-group">
+	{{ edit_field(form.phoneno, class="form-control", value=user.phoneno) }}
+	</fieldset>
+        <fieldset class="form-group">
+        {{ edit_field(form.city , class="form-control", value = user.city) }}
+        </fieldset>
+        <fieldset class="form-group">
+        {{ edit_field(form.country , class="form-control", value=user.country) }}
+        </fieldset>
+        <fieldset class="form-group">
+        {{ edit_field(form.profile , class="form-control", value=user.profile) }}
+        </fieldset>
+        <fieldset class="form-group">
+        {{ edit_field(form.page , class="form-control", value=user.page) }}
+        </fieldset>
+        <fieldset class="form-group">
+        {{ edit_field(form.account_holdername , class="form-control", value=user.account_holdername) }}
+        </fieldset>
+        <fieldset class="form-group">
+        {{ edit_field(form.bank_name , class="form-control", value=user.bank_name) }}
+        </fieldset>
+        <fieldset class="form-group">
+        {{ edit_field(form.account_number , class="form-control", value=user.account_number) }}
+        </fieldset>
+        <fieldset class="form-group">
+        {{ edit_field(form.swift_code , class="form-control", value=user.swift_code) }}
+        </fieldset>
+        <fieldset class="form-group">
+        {{ edit_field(form.iban_number , class="form-control", value=user.iban_number) }}
+        </fieldset>
+        <fieldset class="form-group">
+        {{ edit_field(form.ifsc_code , class="form-control", value=user.ifsc_code) }}
+        </fieldset>
+        <fieldset class="form-group">
+        {{ edit_field(form.branch_address , class="form-control", value=user.branch_address) }}
+        </fieldset>
+        <p>
+        <div class="form-actions">
+            <button class = "btn btn-success" type="submit" class="btn">SAVE</button>
+        </div>
+        </p>
+    </form>
+</div>
+
+
+{% endblock %}

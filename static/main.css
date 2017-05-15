@@ -1,0 +1,197 @@
+/* custom styles */
+
+body {
+  padding-top: 70px;
+}
+
+
+.my_back{
+display: block;
+position:fixed;
+top: 0px;
+left: 0px;
+height: 100%;
+width: 100%;
+z-index: 2147483647;
+background-color: rgba(0, 0, 0, 0.5);
+margin: 0;
+padding: 0;
+border: 0;
+vertical-align:baseline;
+/*display: none;*/
+}
+
+#category{
+  font-family: verdana;
+  font-size: 25px;
+}
+.left-button {
+    margin-top: -80px;
+    margin-left: -45px;
+    position: fixed;
+    z-index: 99999;
+}
+.right-button {
+    margin-top: -80px;
+    margin-left: -40px;
+    position: fixed;
+    z-index: 99999;
+
+
+}
+
+.right-button{
+  margin-top:-80px;
+  margin-left:-40px;
+  position:fixed;
+  z-index:99999;
+}
+.my_linkwrapper{
+  display: block;
+  margin-top: 50px;
+  overflow: hidden;
+  margin-left: auto;
+  margin-right: auto;
+  width: 89%;
+  text-align: center;
+}
+.my_onetab{
+  margin-left: 3px;
+  width: calc(100%/4 - 12px);;
+  margin-top: 20px;
+  display: block;
+  overflow: hidden;
+  background: white;
+  float: left;
+}
+.my_intab{
+  cursor: pointer;
+  width: 100%;
+  display: block;
+  height: 225px;
+  float: left;
+  background-image: url(http://images.viralbuts.com/image.php?img_url=%2F%2Fimg.revcontent.com%2F%3Furl%3Dhttps%3A%2F%2Frevcontent-p0.s3.amazonaws.com%2Fcontent%2Fimages%2F1467300694.png%26static%3Dtrue%26pos%3Dface%26h%3D315%26w%3D420%26static%3Dtrue);
+  background-size: cover;
+}
+.my_content{
+
+  cursor: pointer;
+  width: 100%;
+  min-height: 69px;
+  border-top: 1px solid black;
+  background: #f1f1f1;
+  display: block;
+  float:left;
+  padding: 10px;
+  text-align: left;
+  color: black;
+}
+.my_tosite{
+  cursor: pointer;
+  text-align: center;
+  border-bottom: 0;
+  background: #333;
+  padding: 5px 0;
+  width: 20%;
+  line-height: 30px;
+  display: block;
+  overflow: hidden;
+  vertical-align: baseline;
+  color: white;
+  margin:auto;
+  margin-top: 30px;
+}
+
+@media only screen and (max-device-width: 880px) {
+    .my_linkwrapper{
+  display: inline;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  text-shadow: none;
+  overflow: hidden;
+  text-align: center;
+  vertical-align: baseline;
+}
+.my_onetab{
+  cursor: pointer;
+  border :0;
+  text-decoration: none;
+  width: 100%;
+  display: inline;
+  overflow: hidden;
+  background: cyan;
+max-height: 100px;
+}
+.my_intab{
+  cursor: pointer;
+  width: 50%;
+  display: block;
+  height: 100 px;
+  float: left;
+  background-image: url(http://images.viralbuts.com/image.php?img_url=%2F%2Fimg.revcontent.com%2F%3Furl%3Dhttps%3A%2F%2Frevcontent-p0.s3.amazonaws.com%2Fcontent%2Fimages%2F1467300694.png%26static%3Dtrue%26pos%3Dface%26h%3D315%26w%3D420%26static%3Dtrue);
+  background-size: 100% auto;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  background-repeat: no-repeat;
+}  
+.my_content{
+  cursor: pointer;
+  width: 50%;
+  height: 100 px;
+  background: #f1f1f1;
+  display: block;
+  float:left;
+  text-align: left;
+  color: black;
+  font-size: 1em;
+}
+
+.my_tosite{
+  cursor: pointer;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  border-bottom: 0;
+  background: #333;
+  padding: 5px 0;
+  width: 100%;
+  display: block;
+  overflow: hidden;
+  vertical-align: baseline;
+  color: white;
+  line-height: 2em;
+  font-size: 1em;
+}
+}
+
+
+
+.top-buffer20 { margin-top:20px; }
+.top-buffer40 { margin-top:40px; }
+.top-buffer80 { margin-top:80px; }
+.top-buffer100 { margin-top:100px; }
+
+#state h2{
+  min-height: 139px;
+}
+
+article.post { width:100%;float: left; margin-bottom: 30px; margin-right: 2.6%; background: #FFF; box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05); }
+article.featuredpost.post { width: 65.8% }
+.featured-thumbnail { float: left; max-width: 100%; width: 100%; }
+.featured-thumbnail img 
+{
+  width: 100%;
+  float: left;
+  height: 250px;
+  border-radius: 3px;
+  border-bottom: 8px solid #ff7268;
+  margin-bottom: 10px;
+  }
+
+#state
+{
+  margin-top: 40px;
+  min-height: 600px;
+}
